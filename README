@@ -1,0 +1,11 @@
+This code takes a file of data and a definition and turns it into a gdoc spreadsheet with formulas.
+
+You need to have http://code.google.com/p/gdata-python-client/ available. Full instructions for
+installing using and testing are here: http://code.google.com/apis/gdata/articles/python_client_lib.html
+
+Usage:
+
+./deserialise2gdoc.py --user username -pw password
+
+Note: at present the programme will find the first spreadsheet in your google account and start overwriting it, so best create a new one or better still use it on a google account you don't rely on for anything else!
+
