@@ -1,0 +1,4 @@
+choices,model,make
+data,kgCO2perkm,kg.km^-1,CO2
+user,distance,km,
+algorithm,distance*kgCO2perkm,kg,CO2
