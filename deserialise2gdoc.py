@@ -31,6 +31,7 @@ import getopt
 import sys
 import string
 import csv
+import compdata
 
 class SimpleCRUD:
 
@@ -42,10 +43,7 @@ class SimpleCRUD:
     self.gd_client.ProgrammaticLogin()
     self.curr_key = ''
     self.curr_wksht_id = ''
-    self.list_feed = None
-    self.data = ''
-    self.user = ''
-    self.user_value = '1.0'
+    self.compdata = compdata.Compdata();
     feed = self.gd_client.GetSpreadsheetsFeed()
     self._PrintFeed(feed)
     id_parts = feed.entry[0].id.text.split('/')
@@ -82,54 +80,35 @@ class SimpleCRUD:
       else:
         print '%s %s\n' % (i, entry.title.text)
 
-  def _LoadDef(self, filename):
-    rows = csv.reader(open(filename))
-    #simple-minded, one of each for now
-    choices=rows.next()
-    data=rows.next()
-    self.data = data[1]
-    user=rows.next()
-    self.user = user[1]
-    algo=rows.next()
-    self.algo = algo[1]
-
   #this is slow, need to batch it up with lists!
-  def _LoadData(self, filename):
-    data = csv.reader(open(filename))
-    # Read the column names from the first line of the file
-    #headers = []
-    #headers.extend(data)
-    #data_col=headers[0].index(self.data)
-    #canned for now
-    ir=1
-    for row in data:
-      ic=1
-      for item in row:
-	self._CellsUpdateAction(ir, ic, item)
+  def _PutData(self):
+    ic=1
+    for item in self.compdata.header:
+	self._CellsUpdateAction(1, ic, item)
 	ic=ic+1
-      #insert algorithm column
-      if ir==1:
-	data_col=row.index(self.data)+1
-	self._CellsUpdateAction(1, ic, self.user)
-	self._CellsUpdateAction(1, ic+1, self.algo)
-      else:
-	self._CellsUpdateAction(ir, ic, self.user_value)
-	self._CellsUpdateAction(ir, ic+1, self._GetFormula(ir,data_col,ic))	
+    
+    ir=2
+    for row in self.compdata.rows:
+      for ic in range(1,self.compdata.data_col):
+	self._CellsUpdateAction(ir, ic, row[ic-1])
+      #insert user and algorithm column
+      self._CellsUpdateAction(ir, self.compdata.data_col+1, self.compdata.user_value)
+      self._CellsUpdateAction(ir, self.compdata.data_col+2, self._GetFormula(ir,self.compdata.data_col,self.compdata.data_col+1))	
       ir=ir+1  
     
   def _GetFormula(self, row, data_col, user_col):
-    alphabet=['A','B','C','D','E','F']
-    formula='='+alphabet[data_col-1]
+    formula='='+string.uppercase[data_col-1]
     formula+=str(row)
     formula+='*'
-    formula+=alphabet[user_col-1]
+    formula+=string.uppercase[user_col-1]
     formula+=str(row)
     return formula
 
   def Run(self):
     #self._GetFormula(2,3,4)
-    self._LoadDef('cars_def.csv')    
-    self._LoadData('cars.csv')
+    self.compdata.loadDef('cars_def.csv')    
+    self.compdata.loadData('cars.csv')
+    self._PutData()
     #self._CellsGetAction()
 
 

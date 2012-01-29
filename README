@@ -10,12 +10,13 @@ Usage:
 Note: at present the programme will find the first spreadsheet in your google account and start overwriting it, so best create a new one or better still use it on a google account you don't rely on for anything else!
 
 To do:
-- create class to hold the structure and separate the gdoc code from that
-- full alphabet
 - option to create or specify existing spreadsheet
+- allow arbitrary number of data, user, algo rows
+
+Later:
+* remove 26 column limitation on spreadsheets
 
 Subject to AB's schema
-- allow arbitrary number of data, user, algo rows
 
 Idea:
 Four types data to help specify the computation (like cols in a spreadsheet)
