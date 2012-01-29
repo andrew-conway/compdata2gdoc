@@ -9,3 +9,19 @@ Usage:
 
 Note: at present the programme will find the first spreadsheet in your google account and start overwriting it, so best create a new one or better still use it on a google account you don't rely on for anything else!
 
+To do:
+- create class to hold the structure and separate the gdoc code from that
+- full alphabet
+- option to create or specify existing spreadsheet
+
+Subject to AB's schema
+- allow arbitrary number of data, user, algo rows
+
+Idea:
+Four types data to help specify the computation (like cols in a spreadsheet)
+* choices: values that describe each row (like drilldowns), e.g. manufacturer and model of car
+* data: this has a given value (like a data item value), e.g. kgCO2/km
+* user: this can be set by the user (like a profile item value), e.g. distance
+* algo: this is a value computed by a formula from arithmetic operations on data, user and possibly other algos
+
+By chaining algos together a series of steps in an operation can be set out. As viewed in spreadsheet this is just series of columns with formulas.
