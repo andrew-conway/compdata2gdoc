@@ -1,260 +1,262 @@
 {
 
-    "name": "Gravitaional force",
+  "name": "Gravitaional force",
 
-    "label": "gravitational_force",
+  "label": "gravitational_force",
 
-	"definitions": [
+  "definitions": [
 
-		{
-			"label": "body",
-        	"name" : "Planetary body",
-        	"type" : "string",
-        	"role" : "context",
+    {
 
-        },
+      "label": "body",
+      "name" : "Planetary body",
+      "type" : "string",
+      "role" : "context",
 
-		{
-			
-			"label"  : "acceleration"
-		    "name"   : "Acceleration due to gravity",
-		    "type"   : "decimal",
-        	"role"   : "input",
-            "default": 9.80665,
-            "unit"   : "m/s^2"
+    },
 
-		},
+    {
 
-		{
-			
-			"lable": "mass"
-			"name" : "Mass",
-			"type" : "decimal",
-        	"role" : "input",
-			"unit" : "kg"
+      "label"  : "acceleration"
+      "name"   : "Acceleration due to gravity",
+      "type"   : "decimal",
+      "role"   : "input",
+      "default": 9.80665,
+      "unit"   : "m/s^2"
 
-		},
-		
-		{
-			
-			"label": "force"
-			"name" : "Force due to gravity",
-			"type" : "decimal",
-        	"role" : "output",
-			"unit" : "N"
-				
-		},
-			
-	],
+    },
 
-	"filter": [
-		
-		"body"
+    {
 
-	]
+      "lable": "mass"
+      "name" : "Mass",
+      "type" : "decimal",
+      "role" : "input",
+      "unit" : "kg"
 
-	"algorithm": "force = mass * acceleration;"
+    },
 
-	"contexts": [
+    {
 
-		{
-			
-            "values": {
+      "label": "force"
+      "name" : "Force due to gravity",
+      "type" : "decimal",
+      "role" : "output",
+      "unit" : "N"
 
-	            "body": "Earth",
-      		    "acceleration": 9.80665
+    },
 
-             }
+  ],
 
-		},
+  "filter": [
 
-		{
-			
-            "values": {
-               
-               "body": "Moon",
-               "acceleration": 1.625
+    "body"
 
-            }
+  ]
 
-		},
+  "algorithm": "force = mass * acceleration;"
 
-		{
-			
-            "values": {
+  "contexts": [
 
-                "body": "Sun",
-                "acceleration": 274.1
-            }
+    {
 
-		},
+      "values": {
 
-		{
-			
-            "values": {
+        "body": "Earth",
+        "acceleration": 9.80665
 
-                "body": "Venus",
-            	"acceleration": 8.872
-            
-        	}
+      }
 
-		},
+    },
 
-		{
-			
-            "values": {
+    {
 
-		    	"body": "Mars",
-            	"acceleration": 3.78
-        	
-        	}
+      "values": {
 
-		},
+        "body": "Moon",
+        "acceleration": 1.625
 
-		{
-			
-            "values": {
-			  
-			    "body": "Jupiter",
-            	"acceleration": 25.93
+      }
 
-            }
+    },
 
-		},
+    {
 
-		{
-           
-            "values": {			
+      "values": {
 
-                "body": "Io",
-          		"acceleration": 1.789
+        "body": "Sun",
+        "acceleration": 274.1
+      }
 
-          	}.
+    },
 
-		},
+    {
 
-		{
-			
-            "values": {
+      "values": {
 
-            	"body": "Europa",
-          		"acceleration": 1.314
-          		
-          	}
+        "body": "Venus",
+        "acceleration": 8.872
 
- 		},
+      }
 
-		{
-			
-            "values": {
+    },
 
-            	"body": "Ganymede",
-            	"acceleration": 1.426
-            
-        	}
+    {
 
-		},
+      "values": {
 
-		{
-			
-            "values": {
-            
-            	"body": "Callisto",
-          		"acceleration": 1.24
+        "body": "Mars",
+        "acceleration": 3.78
 
-      		}
+      }
 
-		},
+    },
 
-		{
-			
-            "values": {
-            	
-            	"body": "Saturn",
-          		"acceleration": 11.19
+    {
 
-          	}
+      "values": {
 
-		},
+        "body": "Jupiter",
+        "acceleration": 25.93
 
-		{
-			
-            "values": {
+      }
 
-            	"body": "Titan",
-          		"acceleration": 1.3455
+    },
 
-          	}
+    {
 
-		},
+      "values": {			
 
-		{
-			
-            "values": {
-            	
-            	"body": "Uranus",
-          		"acceleration": 9.01
+        "body": "Io",
+        "acceleration": 1.789
 
-          	}
+      }.
 
-		},
+    },
 
-		{
-			
-            "values": {
-            	
-            	"body": "Titania",
-          		"acceleration": 0.379
+    {
 
-          	}
+      "values": {
 
-		},
+        "body": "Europa",
+        "acceleration": 1.314
 
-		{
-			
-            "values": {
+      }
 
-            	"body": "Oberon",
-          		"acceleration": 0.347
+    },
 
-          	}
+    {
 
-		},
+      "values": {
 
-		{
-			
-            "values": {
+        "body": "Ganymede",
+        "acceleration": 1.426
 
-            	"body": "Neptune",
-          		"acceleration": 11.28
+      }
 
-          	}
+    },
 
-		},
+    {
 
-		{
-			
-            "values": {
+      "values": {
 
-            	"body": "Triton",
-          		"acceleration": 0.779
-          	
-          	}
+        "body": "Callisto",
+        "acceleration": 1.24
 
-		},
+      }
 
-		{
-			
-            "values": {
+    },
 
-            	"body": "Pluto",
-          		"acceleration": 0.610
+    {
 
-          	}
-          	
-		}
-		
-	]
+      "values": {
+
+        "body": "Saturn",
+        "acceleration": 11.19
+
+      }
+
+    },
+
+    {
+
+      "values": {
+
+        "body": "Titan",
+        "acceleration": 1.3455
+
+      }
+
+    },
+
+    {
+
+      "values": {
+
+        "body": "Uranus",
+        "acceleration": 9.01
+
+      }
+
+    },
+
+    {
+
+      "values": {
+
+        "body": "Titania",
+        "acceleration": 0.379
+
+      }
+
+    },
+
+    {
+
+      "values": {
+
+        "body": "Oberon",
+        "acceleration": 0.347
+
+      }
+
+    },
+
+    {
+
+      "values": {
+
+        "body": "Neptune",
+        "acceleration": 11.28
+
+      }
+
+    },
+
+    {
+
+      "values": {
+
+        "body": "Triton",
+        "acceleration": 0.779
+
+      }
+
+    },
+
+    {
+
+      "values": {
+
+        "body": "Pluto",
+        "acceleration": 0.610
+
+      }
+
+    }
+
+  ]
+
 }
 
 

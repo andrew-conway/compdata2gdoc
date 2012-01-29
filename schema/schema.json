@@ -10,7 +10,7 @@
     // Written, human language description of mode/data
     // Ideally we would define a sub-structure for this so that the
     // written documentation is parseable and can be used flexibly
-    "description": <string>
+    "description": <string>,
 
     // General structured provenance information
     // This same structure can appear on individual definitions as
@@ -26,7 +26,7 @@
     	"table"    : <string>,
     	"url"      : <string>
 
-    }
+    },
 
     // Tags for associating keywords with the model. This same structure can 
     // appear on individual definitions and context items
@@ -36,144 +36,151 @@
         <string>,
         ...
 
-    ]
+    ],
 
     // Definitions of each of the active components within the model
-	"definitions": [
+    "definitions": [
 
-        // Each component can be defined using the following properties. 
-		{
-		
-            // Enforced
-            
-            // Computer readable label - no whitespace or special characters
-			"label"      : <string> 
-            
-            // Human language name
-		    "name"       : <string>,
-            
-            // Type of value
-            "type"       : <string 'string','decimal','integer','boolean'>,
-            
-            // The role the value plays in the model
-            // 'context' means that it is not necessarily used as an input
-            // to the algorithm but determines the context
-        	"role"       : <string 'input', 'output', 'context'>,
+      // Each component can be defined using the following properties. 
+      {
 
-            // Optional
-        
-            // Human language decsription or annotations
-        	"description": <string>,
+        // Enforced
 
-            // Physical unit of the value
-            // Follows JScience nomenclature
-            // Perhaps a choice of 'auto' could be valid for outputs
-        	"unit"       : <string>,
+        // Computer readable label - no whitespace or special characters
+        "label": <string> 
 
-            // A default value
-        	"default"    : <string, decimal, integer, boolean>,
+        // Human language name
+        "name" : <string>,
 
-            // Enforced valid values
-        	"choices"    : [
-        	    <string, decimal, integer, boolean>,
-        	    <string, decimal, integer, boolean>,
-        	    ...
-        	],
+        // Type of value
+        "type" : <string 'string','decimal','integer','boolean'>,
 
-            // Tags for associating keywords with the definition
-            // Follows structure above
-        	"tags": [ ... ]
+        // The role the value plays in the model
+        // 'context' means that it is not necessarily used as an input
+        // to the algorithm but determines the context
+        "role" : <string 'input', 'output', 'context'>,
 
-        },
+        // Optional
 
-        { ... },
+        // Human language decsription or annotations
+        "description": <string>,
 
-        { ... },
+        // Physical unit of the value
+        // Follows JScience nomenclature
+        // Perhaps a choice of 'auto' could be valid for outputs
+        "unit" : <string>,
 
-        ...
+        // A default value
+        "default" : <string, decimal, integer, boolean>,
+
+        // Enforced valid values
+        "choices" : [
+          <string, decimal, integer, boolean>,
+          <string, decimal, integer, boolean>,
+          ...
+        ],
+
+        // Tags for associating keywords with the definition
+        // Follows structure above
+        "tags": [ ... ]
+
+      },
+
+      { ... },
+
+      { ... },
+
+      ...
 
     ]
 
+  // Define any definitions which should be considered as sequential filters
+  // These should normally be 'context' definitions
+  // Order is significant
+  "filter": [
 
-    // Define any definitions which should be considered as sequential filters
-    // These should normally be 'context' definitions
-    // Order is significant
-	"filter": [
-		
-		<string>,
-		<string>,
-		...
+    <string>,
+    <string>,
+    ...
 
-	]
+  ]
 
-    // Not sure if we need to include algorithm here. A separate file is probably better
-    // but perhaps it would be useful to add information here.
-    //   
-    //  file name?
-    //
-    //  description, provenance, tags?
-    //
-    //  Information on required and optional inputs?
-    //
-	"algorithm": "y = mx + b;"
+  // Not sure if we need to include algorithm here. A separate file is probably better
+  // but perhaps it would be useful to add information here.
+  //   
+  //  file name?
+  //
+  //  description, provenance, tags?
+  //
+  //  Information on required and optional inputs?
+  //
+  "algorithm": "y = mx + b;"
 
-    // Specfic calculation contexts represented by supplementary data
-	"contexts": [
+  // Specfic calculation contexts represented by supplementary data
+  "contexts": [
 
-		{
+    {
 
-            // Optional annotation
-            "description": <string>,
+      // Optional annotation
+      "description": <string>,
 
-            // Provenance description if different from parent methodology
-            // Follows structure described above
-            "provenance": { ... }
+      // Provenance description if different from parent methodology
+      // Follows structure described above
+      "provenance": { ... }
 
-            // Tags for associating keywords with the context, perhaps synonyms
-            // for the context desciptors
-            // Follows structure described above
-            "tags": [ ... ]
-			
-            "values": {
+      // Tags for associating keywords with the context, perhaps synonyms
+      // for the context desciptors
+      // Follows structure described above
+      "tags": [ ... ]
 
-                // Key-value pairs with the key corresponding to a 
-                // definition label. Value is of the type defined in the
-                // corresponding definition
-                <definition label>: <string, decimal, integer, boolean>,
-                <definition label>: <string, decimal, integer, boolean>,
+      "values": {
 
-                // If data has a historical dimension, it can be described
-                // with an array of values
-                <definition label>: [
+        // Key-value pairs with the key corresponding to a 
+        // definition label. Value is of the type defined in the
+        // corresponding definition
+        //
+        // Maybe { label: <string>, value: <something> } is more robust?
+        <definition label>: <string, decimal, integer, boolean>,
+        <definition label>: <string, decimal, integer, boolean>,
 
-                    {
-                        "date": <date>,
-                        "value": <string, decimal, integer, boolean>
-                    },
+        // If data has a historical dimension, it can be described
+        // with an array of values
+        <definition label>: [
 
-                    {
-                        "date": <date>,
-                        "value": <string, decimal, integer, boolean>
-                    },
+          {
+          
+            "date": <date>,
+            "value": <string, decimal, integer, boolean>
+        
+          },
 
-                    {
-                        "date": <date>,
-                        "value": <string, decimal, integer, boolean>
-                    },
+          {
 
-                ]
+            "date": <date>,
+            "value": <string, decimal, integer, boolean>
 
-            }
+          },
 
-		},
+          {
+ 
+            "date": <date>,
+            "value": <string, decimal, integer, boolean>
+          },
 
-        { ... },
+        ]
 
-        { ... }
+      }
 
-        ...
-		
-	]
+    },
+
+    { ... },
+
+    { ... }
+
+    ...
+
+  ]
+  
 }
 
 
