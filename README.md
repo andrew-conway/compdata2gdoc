@@ -6,7 +6,8 @@ This code takes a file of data and a definition and turns it into a gdoc spreads
 You need to have http://code.google.com/p/gdata-python-client/ available. Full instructions for
 installing using and testing are here: http://code.google.com/apis/gdata/articles/python_client_lib.html
 
-Usage:
+Usage
+-----
 
 ./deserialise2gdoc.py --user username -pw password
 
@@ -28,11 +29,18 @@ Four types data to help specify the computation (like cols in a spreadsheet)
 
 By chaining algos together a series of steps in an operation can be set out. As viewed in spreadsheet this is just series of columns with formulas.
 
-Parsing AMEE algorithms:
-1. Pick a usage
-2. Identify required profile item values
-3. grep the algo for those PIV names => PIV_lines
-4. find the last line where a required PIV is mentioned
-5. if this does not contain an = sign it is a return value, if not skip to step 7
-6. determine what PIV and DIVs are mentioned, if no other variables appear, we're done, otherwise continue...
-7. for each mentioned unidentified variable, search back through the algorithm for it on the LHS of an = sign and repeat recursively until no unidentified variables are left
+algoread
+========
+
+algoread is a script which will extract a much simpler and de-amee-ified algo from an AMEE algo.
+
+It's tested on some real AMEE algos but cannot yet handle dataFinders or MARV or some of
+the more involved algos with complex structures, e.g. stationary combustion.
+
+Usage
+-----
+The start of the code will need to be editted to specify data item and profile item values.
+
+./algoread.py algo-file
+
+There's a lot of messy output at the moment, but the final line will be a simple, one line summary of the calculation performed by the algo.
