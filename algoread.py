@@ -2,7 +2,14 @@
 
 import sys
 
+#This script reads an AMEE javascript algorithm given knowledge of which PIVs should be set
+#(i.e. a specified usage) and what DIVs are relevant and attempts to construct a simple
+#formula that the algorithm would perfom in that case. It will fail in some cases at present.
+#This is useful for removing models for use outside AMEE, for example so you can create
+#a class in python, ruby, java etc or even spreadheets.
+ 
 #todo:
+# - it is VERY hit and miss just now!
 # - usages need to be read and selected externally
 # - MARV needs support
 # - *= style assignment needs to be handled correctly
